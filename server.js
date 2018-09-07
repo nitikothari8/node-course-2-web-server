@@ -17,13 +17,18 @@ app.set('view engine','hbs');
 app.use((req, res, next) => {
   var d = new Date().toString();
   var log = d + " " + req.method+ " " + req.path;
-   //fs.appendFile('log.txt',log + '\n');
+   fs.appendFile('log.txt',log + '\n',err=>{
+     if(err){
+       console.log(err);
+     }
+     next();
+   });
 });
 
 
-app.use((req, res, next) => {
-     res.render('maintence.hbs');
-});
+// app.use((req, res, next) => {
+//      res.render('maintence.hbs');
+// });
 
 app.get('/about',(req, res) => {
      res.render('about.hbs',{
