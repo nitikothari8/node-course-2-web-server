@@ -50,6 +50,15 @@ app.get("/",(req, res) =>
        msg : 'Welcome to all Users'
     });
 });
+
+
+app.get("/project",(req, res) =>
+{
+    res.render("project.hbs",{
+      pageTitle : 'Project Page',
+       msg : 'Welcome to project page'
+    })
+});
 app.use(express.static(__dirname + '/public'));
 app.listen(port,() =>{
   console.log("Server is on port 3000");
